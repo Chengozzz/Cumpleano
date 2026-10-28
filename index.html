@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Una mini historia interactiva de cumpleaños protagonizada por un conejo viajero." />
+  <title>El Viaje del Conejo · Feliz Cumpleaños</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <span class="orb orb-a"></span>
+    <span class="orb orb-b"></span>
+    <span class="orb orb-c"></span>
+  </div>
+
+  <header class="site-header">
+    <p class="brand">El Viaje del Conejo</p>
+    <p class="tagline">Una historia de cumpleaños, un paso a la vez</p>
+  </header>
+
+  <main class="app">
+    <section class="map-section" aria-label="Mapa del viaje">
+      <div class="map-stage" id="mapStage">
+        <svg class="trail-svg" id="trailSvg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="trailGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f6b26b" />
+              <stop offset="50%" stop-color="#7ec8a3" />
+              <stop offset="100%" stop-color="#f28b82" />
+            </linearGradient>
+          </defs>
+          <path id="trailPath" class="trail-path" fill="none" stroke="url(#trailGradient)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2.2 1.6" />
+        </svg>
+
+        <div class="nodes" id="nodes" role="list" aria-label="Checkpoints de la historia"></div>
+
+        <div class="rabbit" id="rabbit" aria-hidden="true">
+          <span class="rabbit-emoji" id="rabbitEmoji">🐇</span>
+          <span class="rabbit-shadow"></span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="story-panel" aria-live="polite">
+      <div class="bubble" id="bubble">
+        <p class="bubble-step" id="bubbleStep">Paso 1 de 5</p>
+        <h2 class="bubble-title" id="bubbleTitle">El despertar</h2>
+        <p class="bubble-message" id="bubbleMessage">
+          Cargando el primer recuerdo…
+        </p>
+      </div>
+
+      <nav class="controls" aria-label="Controles de la historia">
+        <button type="button" class="btn btn-secondary" id="btnPrev" disabled>
+          ← Anterior
+        </button>
+        <button type="button" class="btn btn-primary" id="btnNext">
+          Siguiente ➔
+        </button>
+      </nav>
+    </aside>
+  </main>
+
+  <div class="finale" id="finale" hidden>
+    <div class="finale-card" role="dialog" aria-modal="true" aria-labelledby="finaleTitle">
+      <p class="finale-eyebrow">Destino alcanzado</p>
+      <h2 id="finaleTitle">¡Feliz cumpleaños!</h2>
+      <p id="finaleMessage">
+        El conejo llegó al final del sendero… y trajo este deseo solo para ti.
+      </p>
+      <button type="button" class="btn btn-primary" id="btnRestart">
+        Volver a empezar
+      </button>
+    </div>
+  </div>
+</body>
+</html>
